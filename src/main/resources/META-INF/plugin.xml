@@ -1,0 +1,24 @@
+<idea-plugin>
+    <id>de.timheide.ollama-proxy</id>
+    <name>Ollama Proxy</name>
+    <vendor>Tim Heide</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Ollama Proxy"
+                    secondary="true"
+                    icon="AllIcons.General.Modified"
+                    anchor="right"
+                    factoryClass="de.timheide.ollamaproxyplugin.ui.OllamaToolWindow"/>
+
+        <projectService serviceImplementation="de.timheide.ollamaproxyplugin.services.OllamaServerService"/>
+        <applicationService serviceImplementation="de.timheide.ollamaproxyplugin.settings.OllamaSettingsState"/>
+        <applicationConfigurable parentId="tools" instance="de.timheide.ollamaproxyplugin.settings.OllamaSettings"
+                                 id="de.timheide.ollamaproxyplugin.settings.OllamaSettings"
+                                 displayName="Ollama Proxy Settings"/>
+        <notificationGroup id="Ollama Proxy"
+                           displayType="BALLOON"/>
+    </extensions>
+
+</idea-plugin>
