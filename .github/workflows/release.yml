@@ -1,8 +1,10 @@
-name: Build Plugin
+name: Build and Release Plugin
 
 on:
   push:
     branches: [ main ]
+    tags:
+      - 'v*'  # Push events to matching v*, i.e. v1.0, v20.15.10
   pull_request:
     branches: [ main ]
 
@@ -30,3 +32,12 @@ jobs:
         with:
           name: ollama-proxy-plugin
           path: build/distributions/*.zip
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/distributions/*.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
