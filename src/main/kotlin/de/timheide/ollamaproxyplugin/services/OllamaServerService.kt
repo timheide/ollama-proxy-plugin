@@ -9,6 +9,8 @@ import kotlinx.coroutines.*
 import org.slf4j.LoggerFactory
 import java.net.Socket
 import java.io.IOException
+import de.timheide.ollamaproxyplugin.settings.OllamaSettingsState
+
 @Service(Level.PROJECT)
 class OllamaServerService(private val project: Project) {
     private var server: Server? = null
@@ -19,15 +21,29 @@ class OllamaServerService(private val project: Project) {
     fun startServer(provider: LLMProvider) {
         if (serverJob?.isActive == true) return
 
+        val port = OllamaSettingsState.instance.port
+        if (isPortInUse(port)) {
+            logger.error("Port $port is already in use. Cannot start server.")
+            throw IllegalStateException("Port $port is already in use. Please stop any other services using this port.")
+        }
+
         serverJob = scope.launch {
-            server = Server(provider)
-            server?.start()
+            try {
+                server = Server(provider)
+                server?.start()
+                logger.info("Server started successfully on port $port")
+            } catch (e: Exception) {
+                logger.error("Failed to start server", e)
+                server = null
+                throw e
+            }
         }
     }
 
     fun stopServer() {
         runBlocking {
             try {
+                val port = OllamaSettingsState.instance.port
                 logger.info("Stopping server...")
                 server?.stop()
                 serverJob?.cancelAndJoin()
@@ -36,8 +52,8 @@ class OllamaServerService(private val project: Project) {
 
                 delay(1000) // Give some time for port to be released
 
-                if (isPortInUse(8080)) {
-                    logger.error("Port 8080 still in use after server stop")
+                if (isPortInUse(port)) {
+                    logger.error("Port $port still in use after server stop")
                 } else {
                     logger.info("Server port successfully released")
                 }
@@ -46,7 +62,6 @@ class OllamaServerService(private val project: Project) {
             }
         }
     }
-
 
     private fun isPortInUse(port: Int): Boolean {
         return try {
