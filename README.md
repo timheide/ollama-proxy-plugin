@@ -1,6 +1,6 @@
 # Ollama Proxy Plugin for JetBrains IDE
 
-A plugin that provides a proxy interface between JetBrains IDE and Anthropic's Claude models, mimicking the Ollama API format.
+A JetBrains IDE plugin that enables using Anthropic's Claude 3.5 models (Sonnet, Opus, and Haiku) with the JetBrains AI Assistant. It works by providing a proxy that mimics the Ollama API format, allowing you to use Claude models through the AI Assistant's "Enable Ollama" feature in the Third-party AI providers settings.
 
 ## Features
 
@@ -27,7 +27,9 @@ A plugin that provides a proxy interface between JetBrains IDE and Anthropic's C
 1. Open the Ollama Proxy tool window (View → Tool Windows → Ollama Proxy)
 2. Click "Start Server" to begin the proxy service
 3. The proxy will be available at http://localhost:11434
-4. Use the standard Ollama API endpoints with Claude models
+4. In the JetBrains AI Assistant Settings enable the Ollama integration via "Third-party AI providers".
+5. You can now use Claude 3.5 Sonnet in the model dropdown in the AI Assistant
+6. If the models do not show up please disable Ollama in the JetBrains AI Assistant and enable it again.
 
 ## API Endpoints
 
