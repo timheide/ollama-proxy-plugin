@@ -2,6 +2,33 @@
     <id>de.timheide.ollama-proxy</id>
     <name>Ollama Proxy</name>
     <vendor>Tim Heide</vendor>
+    <description><![CDATA[
+        Enables using Anthropic's Claude 3.5 models with the JetBrains AI Assistant plugin.
+
+        This plugin provides a proxy that allows you to use Claude models through the AI Assistant's "Enable Ollama" feature in Third-party AI providers settings.
+
+        <b>Supported Models:</b>
+        • Claude-3.5-Sonnet
+        • Claude-3.5-Opus
+        • Claude-3.5-Haiku
+
+        <b>Features:</b>
+        • Easy configuration through Settings → Tools → Ollama Proxy Settings
+        • Configurable proxy port (default: 11434)
+        • Real-time server status monitoring
+        • One-click server start/stop functionality
+
+        <b>Setup:</b>
+        1. Install the plugin
+        2. Configure your Anthropic API key in Settings → Tools → Ollama Proxy Settings
+        3. Start the proxy server using the Ollama Proxy tool window
+        4. Enable Ollama in AI Assistant's Third-party AI providers settings
+        5. Start using Claude models in your IDE
+
+        <b>Requirements:</b>
+        • Valid Anthropic API key (obtain from console.anthropic.com)
+        • JetBrains AI Assistant plugin
+        ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
 
