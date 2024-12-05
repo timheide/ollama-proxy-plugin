@@ -48,7 +48,6 @@
                     anchor="right"
                     factoryClass="de.timheide.ollamaproxyplugin.ui.OllamaToolWindow"/>
 
-        <projectService serviceImplementation="de.timheide.ollamaproxyplugin.services.OllamaServerService"/>
         <applicationService serviceImplementation="de.timheide.ollamaproxyplugin.settings.OllamaSettingsState"/>
         <applicationConfigurable parentId="tools" instance="de.timheide.ollamaproxyplugin.settings.OllamaSettings"
                                  id="de.timheide.ollamaproxyplugin.settings.OllamaSettings"
