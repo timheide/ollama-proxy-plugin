@@ -1,11 +1,48 @@
-<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M32.0845 7.94025V4H24.0203V7.9896H16.029V4H7.91553V7.94025H4V36H16.0044V32.0045C16.0058 30.9457 16.4274 29.9308 17.1766 29.1826C17.9258 28.4345 18.9412 28.0143 20 28.0143C21.0588 28.0143 22.0743 28.4345 22.8234 29.1826C23.5726 29.9308 23.9942 30.9457 23.9956 32.0045V36H36V7.94025H32.0845Z"
-          fill="url(#paint0_linear)"/>
+<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <!-- Gradient Definitions -->
     <defs>
-        <linearGradient id="paint0_linear" x1="2.94192" y1="4.89955" x2="37.7772" y2="39.7345" gradientUnits="userSpaceOnUse">
-            <stop offset="0.15937" stop-color="#3BEA62"/>
-            <stop offset="0.5404" stop-color="#3C99CC"/>
-            <stop offset="0.93739" stop-color="#6B57FF"/>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
         </linearGradient>
+        <linearGradient id="sourceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="targetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+        </linearGradient>
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
+            <feOffset dx="0" dy="1"/>
+            <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.25 0"/>
+        </filter>
+    </defs>
+
+    <!-- Background -->
+    <rect width="40" height="40" rx="8" fill="url(#bgGradient)"/>
+
+    <!-- Modern Connection Lines -->
+    <path d="M8 20 L32 20" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.3"/>
+    <path d="M20 8 L20 32" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.3"/>
+
+    <!-- Source Circle (Ollama) with Gradient -->
+    <circle cx="12" cy="12" r="6" fill="url(#sourceGradient)" filter="url(#shadow)"/>
+
+    <!-- Target Circle (Claude) with Gradient -->
+    <circle cx="28" cy="28" r="6" fill="url(#targetGradient)" filter="url(#shadow)"/>
+
+    <!-- Modern Connection Arrow -->
+    <path d="M15 15 Q20 20 25 25" stroke="#ffffff" stroke-width="2"
+          stroke-linecap="round" marker-end="url(#arrowhead)"/>
+
+    <!-- Refined Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="3" refY="2"
+                orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,4 L4,2 Z" fill="#ffffff"/>
+        </marker>
     </defs>
 </svg>
