@@ -10,6 +10,8 @@ A JetBrains IDE plugin that enables using Anthropic's Claude 3.5 models (Sonnet,
 - Real-time server status monitoring
 - One-click server start/stop functionality
 
+![Plugin Demo](./assets/demo.gif)
+
 ## Installation
 
 1. Download the plugin from JetBrains Marketplace (or build from source)
