@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "de.timheide"
-version = "0.0.6"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
@@ -30,6 +30,13 @@ tasks {
     }
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions.jvmTarget = "17"
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events("passed", "skipped", "failed")
+        }
     }
 
     patchPluginXml {
@@ -68,4 +75,13 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.5.12")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
 
+    // Testing dependencies
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+    testImplementation("io.mockk:mockk:1.13.5")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
+    testImplementation("io.ktor:ktor-client-mock:2.3.13")
+    testImplementation("io.ktor:ktor-server-test-host:2.3.13")
+    testImplementation("org.assertj:assertj-core:3.24.2")
 }
